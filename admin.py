@@ -12,7 +12,7 @@ def admin_principal():
     tk.Button(root, text="Gestión de Productos", command=gestion_productos, height=3, width=20).pack(pady=20)
     tk.Button(root, text="Reportes", command=abrir_reportes, height=3, width=20).pack(pady=20)
     tk.Button(root, text="Calcular Propinas", command=calcular_propinas, height=3, width=20).pack(pady=20)
-    tk.Button(root, text="Volver", command=lambda: (root.destroy(), from auth import iniciar_sesion, iniciar_sesion())).pack(pady=20)
+    tk.Button(root, text="Volver", command=lambda: (root.destroy(), iniciar_sesion())).pack(pady=20)
 
     root.mainloop()
 
@@ -141,8 +141,7 @@ def obtener_datos_unicos(campo):
     resultados = fetch_all(query)
     return [item[0] for item in resultados]
 
-def guardar_persona(rut, nombre, usuario, contraseña, contacto, calle, numero, comuna, ciudad, region, pais,
-                    responsabilidad):
+def guardar_persona(rut, nombre, usuario, contraseña, contacto, calle, numero, comuna, ciudad, region, pais, responsabilidad):
     try:
         query = "INSERT INTO personas (rut, nombre, usuario, contraseña, contacto, calle, numero, comuna, ciudad, region, pais, responsabilidad) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
         execute_query(query, (rut, nombre, usuario, contraseña, contacto, calle, int(numero), comuna, ciudad, region, pais, responsabilidad))
@@ -194,6 +193,7 @@ def modificar_persona():
 
     btn_guardar = tk.Button(mod_root, text="Guardar Cambios", command=guardar_cambios)
     btn_guardar.grid(row=13, column=1, padx=10, pady=20)
+    tk.Button(mod_root, text="Volver", command=lambda: (mod_root.destroy(), gestion_personas())).pack(pady=20)
 
     mod_root.mainloop()
 

@@ -42,12 +42,11 @@ def cocina():
 
     def cerrar_cocina():
         root.destroy()
-        from auth import iniciar_sesion
         iniciar_sesion()
 
     tk.Button(root, text="Marcar como Listo", command=marcar_como_listo).pack(pady=20)
     tk.Button(root, text="Cerrar", command=cerrar_cocina).pack(pady=20)
-    tk.Button(root, text="Volver", command=lambda: (root.destroy(), from auth import iniciar_sesion, iniciar_sesion())).pack(pady=20)
+    tk.Button(root, text="Volver", command=lambda: (root.destroy(), iniciar_sesion())).pack(pady=20)
 
     cargar_comandas()
     root.mainloop()

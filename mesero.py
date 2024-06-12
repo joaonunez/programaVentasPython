@@ -1,8 +1,12 @@
 # mesero.py
 import tkinter as tk
 from tkinter import ttk, messagebox, simpledialog
-from db import fetch_all, execute_query
+from db import fetch_all, execute_query, fetch_one
 import datetime
+
+def iniciar_sesion():
+    from auth import iniciar_sesion
+    iniciar_sesion()
 
 def acceder_como_mesero(rut_usuario):
     root = tk.Tk()
@@ -13,11 +17,10 @@ def acceder_como_mesero(rut_usuario):
 
     tk.Button(root, text="Generar Comanda", command=lambda: generar_comanda(rut_usuario), height=3, width=20).pack(pady=20)
     tk.Button(root, text="Finalizar Venta", command=lambda: finalizar_venta(rut_usuario), height=3, width=20).pack(pady=20)
-    tk.Button(root, text="Volver", command=lambda: (root.destroy(), from auth import iniciar_sesion, iniciar_sesion())).pack(pady=20)
+    tk.Button(root, text="Volver", command=lambda: (root.destroy(), iniciar_sesion())).pack(pady=20)
 
     def cerrar_sesion():
         root.destroy()
-        from auth import iniciar_sesion
         iniciar_sesion()
 
     tk.Button(root, text="Cerrar Sesión", command=cerrar_sesion).pack(pady=20)
